@@ -8,6 +8,9 @@ interface EnvConfig {
   MONGO_DB_URI_SECRET_KEY: string;
   PORT: string;
   NODE_ENV: "development" | "production";
+  JWT_ACCESS_SECRET: string;
+  JWT_ACCESS_EXPIRE: string;
+  BCRYPT_SALT_ROUND: string;
 }
 
 const loadEnvVariables = (): EnvConfig => {
@@ -17,6 +20,9 @@ const loadEnvVariables = (): EnvConfig => {
     "MONGO_DB_URI_SECRET_KEY",
     "PORT",
     "NODE_ENV",
+    "JWT_ACCESS_SECRET",
+    "JWT_ACCESS_EXPIRE",
+    "BCRYPT_SALT_ROUND",
   ];
 
   requiredEnvVariables.forEach((key) => {
@@ -31,6 +37,9 @@ const loadEnvVariables = (): EnvConfig => {
     MONGO_DB_URI_SECRET_KEY: process.env.MONGO_DB_URI_SECRET_KEY as string,
     PORT: process.env.PORT as string,
     NODE_ENV: process.env.NODE_ENV as "development" | "production",
+    JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET as string,
+    JWT_ACCESS_EXPIRE: process.env.JWT_ACCESS_EXPIRE as string,
+    BCRYPT_SALT_ROUND: process.env.BCRYPT_SALT_ROUND as string,
   };
 };
 
