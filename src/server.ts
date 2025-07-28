@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import app from "./app";
 dotenv.config({ quiet: true });
 import { envVariables } from "./app/config/env";
+import { seedSuperAdmin } from "./app/utils/seedSuperAdmin";
 
 const {
   MONGO_DB_USER,
@@ -33,7 +34,10 @@ const startServer = async () => {
   }
 };
 
-startServer();
+(async () => {
+  await startServer();
+  await seedSuperAdmin();
+})();
 
 process.on("SIGTERM", () => {
   console.log("SIGTERM signal received... Server shutting down..");
