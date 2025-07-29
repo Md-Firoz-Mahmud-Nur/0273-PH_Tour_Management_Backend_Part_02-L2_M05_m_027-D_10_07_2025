@@ -20,6 +20,8 @@ export const checkAuth =
         envVariables.JWT_ACCESS_SECRET
       );
 
+      req.user = verifyAccessToken;
+
       if (!authRoles.includes((verifyAccessToken as JwtPayload).role)) {
         throw new AppError(403, "You are not an admin");
       }
